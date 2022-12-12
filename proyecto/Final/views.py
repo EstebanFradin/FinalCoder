@@ -1,7 +1,7 @@
 from django.http import HttpResponse
-from django.template import Template,Context,loader
+from django.template import Template,Context
+from django.shortcuts import render
 
-def Plantilla (request):
-    datos = loader.get_template("index.html")
-    documento = datos.render()
-    return HttpResponse(documento)
+def Inicio (request):
+   return render(request,"index.html")
+   
