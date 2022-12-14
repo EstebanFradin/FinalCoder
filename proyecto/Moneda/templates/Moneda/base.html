@@ -45,7 +45,7 @@
                             role="button" data-bs-toggle="dropdown" aria-expanded="false"><img
                                 src="{% static 'Moneda/assets/img/usuario.png' %}" alt="Icono del usuario"></a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="./views/login.html">Iniciar Sesión</a></li>
+                            <li><a class="dropdown-item" href="{% url 'inicia-sesion' %}">Iniciar Sesión</a></li>
                             <li><a class="dropdown-item" href="./views/register.html">Registrarse</a></li>
                         </ul>
                     </li>

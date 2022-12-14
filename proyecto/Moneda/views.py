@@ -14,3 +14,11 @@ def slots (request):
 def caracruz (request):
     return render(request,"Moneda/cara-cruz.html")
 
+def inicio_sesion (request):
+    return render (request, "Moneda/login.html")
+
+def Contacto (request):
+   return render(request, "Final/templates/index.html")
+
+
+

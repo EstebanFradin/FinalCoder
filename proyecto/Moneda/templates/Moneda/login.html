@@ -1,0 +1,37 @@
+{% extends "Moneda/base.html" %}
+
+{% load static %}
+
+{% block Contenido %}
+<body class="fondo">
+    
+    <div class="cuadro">
+        <div class="logo-sesion">
+            <a href="{% url 'home-inicio' %}"><img src="{% static 'Moneda/assets/img/logo.png' %}" alt="logo" ></a>
+        </div>
+        
+        <p class="logo-sesion">INICIAR SESIÓN</p>
+        <form action="" >
+            <div class="caja">
+                <input type="text" name="" placeholder="Usuario" class="caja1">
+            </div>
+            
+            <div class="caja">
+                <input type="text" name="" placeholder="Contraseña" class="caja2">
+            </div>
+            
+            <div class="caja">
+                <input type="submit" value="INICIAR SESIÓN" class="caja3">
+            </div>
+            
+        </form>
+        <hr>
+        <div class="caja">
+            <p class="aviso-register">Si aún no creas tu cuenta. <a href="./register.html" class="palabra-link">REGISTRATE</a></p>
+        </div>
+        
+    </div>
+    
+</body>
+
+{% endblock %}
