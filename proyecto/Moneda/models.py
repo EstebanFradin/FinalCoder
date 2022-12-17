@@ -10,7 +10,12 @@ class Iniciar (models.Model):
 class Jugador(models.Model):
     usuario = models.CharField(max_length=50)
     contraseña = models.CharField(max_length=40)
+    nombre = models.CharField(max_length=50)
     balance = models.IntegerField()
+    def __init__(self, nombre, balance, mazo) -> None:
+        self.name = nombre
+        self.balance = balance
+        self.mazo = mazo
 
 class Avatar(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)

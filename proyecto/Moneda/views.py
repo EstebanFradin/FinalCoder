@@ -6,9 +6,13 @@ from Moneda.forms import Registrar_User,UserEditForm,AvatarForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from Moneda.models import Avatar
+from Moneda.apps import moneda,slots,random
+
 
 
 # Create your views here.
+
+#Vistas relacionadas al usuario
 
 @login_required
 def blackjack (request):
@@ -107,6 +111,130 @@ def elegir_avatar(request):
     formulario = AvatarForm()
 
     return render(request, 'Moneda/agregar-avatar.html',{"form": formulario})
+
+# Vista de Juegos
+def caracruz_cara (request):
+    opciones = ['CARA', 'CRUZ']
+    seleccionCPU = random.randint(0,1)
+    seleccionJugador = 'CARA'
+    if seleccionJugador.upper() == opciones[seleccionCPU]:
+        resultado = f'Ganaste {seleccionCPU}'
+        #duplicar plata self.balance = self.balance + int(MontoApostado)
+    else:
+        resultado = f'perdiste {seleccionCPU}'
+        #perder plata
+    return render(request,"Moneda/cara-cruz.html", {'resultado': resultado})
+
+def caracruz_cruz (request):
+    opciones = ['CARA', 'CRUZ']
+    seleccionCPU = random.randint(0,1)
+    seleccionJugador = 'CRUZ'
+    if seleccionJugador.upper() == opciones[seleccionCPU]:
+        resultado = 'Ganaste'
+        #duplicar plata self.balance = self.balance + int(MontoApostado)
+    else:
+        resultado = 'perdiste'
+        #perder plata
+    return render(request,"Moneda/cara-cruz.html", {'resultado': resultado})
+
+def slots (request):
+
+
+    opciones = ['#','@','*']
+    row1 = [0,0,0]
+    row2 = [0,0,0]
+    row3 = [0,0,0]
+    matriz = [row1,row2,row3]
+    for i in matriz:
+        x = 0
+        for p in matriz[x]:
+            matriz[x][0] = opciones[random.randint(0,2)]
+            matriz[x][1] = opciones[random.randint(0,2)]
+            matriz[x][2] = opciones[random.randint(0,2)]
+            x += 1
+    m1 = (matriz[0])
+    m2 = (matriz[1])
+    m3 = (matriz[2])
+    if row2[0] == row2[1] and row2[1] == row2[2]:
+        resultado = 'gamaste bro'
+    else:
+        resultado = 'perdiste amigo'
+
+    return render(request,"Moneda/slots.html", {'m1':m1,'m2':m2,'m3':m3,'resultado': resultado})
+
+def blackjack1 (request):
+    opciones = [1,2,3,4,5,6]
+    seleccionCPU = random.choice(opciones)
+    seleccionJugador = 1
+    if seleccionJugador == seleccionCPU:
+        resultado = f'Ganaste----salio el {seleccionCPU}'
+        #duplicar plata self.balance = self.balance + int(MontoApostado)
+    else:
+        resultado = f'Perdiste----salio el {seleccionCPU}'
+        #perder plata
+    return render(request,"Moneda/cara-cruz.html", {'resultado': resultado})
+
+def blackjack2 (request):
+    opciones = [1,2,3,4,5,6]
+    seleccionCPU = random.choice(opciones)
+    seleccionJugador = 2
+    if seleccionJugador == seleccionCPU:
+        resultado = f'Ganaste----salio el {seleccionCPU}'
+        #duplicar plata self.balance = self.balance + int(MontoApostado)
+    else:
+        resultado = f'Perdiste----salio el {seleccionCPU}'
+        #perder plata
+    return render(request,"Moneda/cara-cruz.html", {'resultado': resultado})
+
+def blackjack3 (request):
+    opciones = [1,2,3,4,5,6]
+    seleccionCPU = random.choice(opciones)
+    seleccionJugador = 3
+    if seleccionJugador == seleccionCPU:
+        resultado = f'Ganaste----salio el {seleccionCPU}'
+        #duplicar plata self.balance = self.balance + int(MontoApostado)
+    else:
+        resultado = f'Perdiste----salio el {seleccionCPU}'
+        #perder plata
+    return render(request,"Moneda/cara-cruz.html", {'resultado': resultado})
+
+def blackjack4 (request):
+    opciones = [1,2,3,4,5,6]
+    seleccionCPU = random.choice(opciones)
+    seleccionJugador = 4
+    if seleccionJugador == seleccionCPU:
+        resultado = f'Ganaste----salio el {seleccionCPU}'
+        #duplicar plata self.balance = self.balance + int(MontoApostado)
+    else:
+        resultado = f'Perdiste----salio el {seleccionCPU}'
+        #perder plata
+    return render(request,"Moneda/cara-cruz.html", {'resultado': resultado})
+
+def blackjack5 (request):
+    opciones = [1,2,3,4,5,6]
+    seleccionCPU = random.choice(opciones)
+    seleccionJugador = 5
+    if seleccionJugador == seleccionCPU:
+        resultado = f'Ganaste----salio el {seleccionCPU}'
+        #duplicar plata self.balance = self.balance + int(MontoApostado)
+    else:
+        resultado = f'Perdiste----salio el {seleccionCPU}'
+        #perder plata
+    return render(request,"Moneda/cara-cruz.html", {'resultado': resultado})
+
+def blackjack6 (request):
+    opciones = [1,2,3,4,5,6]
+    seleccionCPU = random.choice(opciones)
+    seleccionJugador = 6
+    if seleccionJugador == seleccionCPU:
+        resultado = f'Ganaste----salio el {seleccionCPU}'
+        #duplicar plata self.balance = self.balance + int(MontoApostado)
+    else:
+        resultado = f'Perdiste----salio el {seleccionCPU}'
+        #perder plata
+    return render(request,"Moneda/cara-cruz.html", {'resultado': resultado})
+
+# Vista del Formulario de Contacto
 
 def Contacto (request):
    return render(request, "Final/templates/index.html")

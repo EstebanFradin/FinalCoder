@@ -42,17 +42,17 @@
                     <li class="nav-item"><a class="nav-link" href="#team">Equipo</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
 
-                    
-                    <li class="nav-item dropdown"> 
-                        
-                        <a class="nav-link dropdown-toggle" href="./views/perfil.html"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{user.username}}
-                        </a> 
-                        
 
-                       
-                            
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle" href="./views/perfil.html" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            {{user.username}}
+                        </a>
+
+
+
+
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{% url 'auth-login' %}">Iniciar Sesión</a></li>
                             <li><a class="dropdown-item" href="{% url 'auth-register' %}">Registrarse</a></li>
@@ -62,8 +62,9 @@
 
                         </ul>
                     </li>
-                    <li class="nav-item"><a style="padding-top: 5%;" class="nav-link" href="{% url 'auth-perfil' %}"><img
-                                src="{{imagen_url}}" style="max-width: 40px;border-radius: 50%;"></a></li>
+                    <li class="nav-item"><a style="padding-top: 5%;" class="nav-link"
+                            href="{% url 'auth-perfil' %}"><img src="{{imagen_url}}"
+                                style="max-width: 40px;border-radius: 50%;"></a></li>
                 </ul>
             </div>
         </div>
@@ -156,7 +157,8 @@
                             manera:<br>
                             -Nos comunicamos por discord y juntos empezamos a planearlo. Luego de pensar y leer las
                             consignas comenzamos con el código.<br>-El proyecto fue iniciado por Felipe, el cuál importo
-                            Django y empezó inmediatamente a desarrollar los juegos.<br>-Esteban se encargó de los templates, luego de crearlos acomodo las url (url.py).
+                            Django y empezó inmediatamente a desarrollar los juegos.<br>-Esteban se encargó de los
+                            templates, luego de crearlos acomodo las url (url.py).
 
                         </p>
                     </div>
@@ -354,7 +356,37 @@
                                 <a href="{% url 'juego-blackjack' %}"><button
                                         class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
                                         type="button">
-                                        Comenzar a jugar!
+                                        1
+                                    </button>
+                                </a>
+                                <a href="{% url 'juego-blackjack2' %}"><button
+                                        class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
+                                        type="button">
+                                        2
+                                    </button>
+                                </a>
+                                <a href="{% url 'juego-blackjack3' %}"><button
+                                        class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
+                                        type="button">
+                                        3
+                                    </button>
+                                </a>
+                                <a href="{% url 'juego-blackjack4' %}"><button
+                                        class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
+                                        type="button">
+                                        4
+                                    </button>
+                                </a>
+                                <a href="{% url 'juego-blackjack5' %}"><button
+                                        class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
+                                        type="button">
+                                        5
+                                    </button>
+                                </a>
+                                <a href="{% url 'juego-blackjack6' %}"><button
+                                        class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
+                                        type="button">
+                                        6
                                     </button>
                                 </a>
                             </div>
@@ -418,12 +450,12 @@
                                     que escogiste se duplica lo que apostaste..)<br>
                                     IMPORTANTE: se considera cruz al número de la moneda, mientras que la efigie o
                                     dibujo se considera la cara.</p>
-                                <a href="{% url 'juego-caracruz' %}"><button
+                                <a href="{% url 'juego-caracruz-cara' %}"><button
                                         class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
                                         type="button">
                                         Cara
                                     </button></a>
-                                <a href="{% url 'juego-caracruz' %}"><button
+                                <a href="{% url 'juego-caracruz-cruz' %}"><button
                                         class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
                                         type="button">
                                         Cruz
