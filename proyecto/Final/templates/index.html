@@ -28,7 +28,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#page-top">PROJECT</a>
+            <a class="navbar-brand" href="#page-top">PYCINO</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
@@ -41,14 +41,29 @@
                     <li class="nav-item"><a class="nav-link" href="#about">Sobre Nosotros</a></li>
                     <li class="nav-item"><a class="nav-link" href="#team">Equipo</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
-                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="./views/perfil.html"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false"><img
-                                src="{% static 'Moneda/assets/img/usuario.png' %}" alt="Icono del usuario"></a>
+
+                    
+                    <li class="nav-item dropdown"> 
+                        
+                        <a class="nav-link dropdown-toggle" href="./views/perfil.html"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{user.username}}
+                        </a> 
+                        
+
+                       
+                            
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="./views/login.html">Iniciar Sesión</a></li>
-                            <li><a class="dropdown-item" href="./views/register.html">Registrarse</a></li>
+                            <li><a class="dropdown-item" href="{% url 'auth-login' %}">Iniciar Sesión</a></li>
+                            <li><a class="dropdown-item" href="{% url 'auth-register' %}">Registrarse</a></li>
+                            {% if request.user.is_authenticated %}
+                            <li><a class="dropdown-item" href="{% url 'auth-logout' %}">Cerrar Sesión</a></li>
+                            {% endif %}
+
                         </ul>
                     </li>
+                    <li class="nav-item"><a style="padding-top: 5%;" class="nav-link" href="{% url 'auth-perfil' %}"><img
+                                src="{{imagen_url}}" style="max-width: 40px;border-radius: 50%;"></a></li>
                 </ul>
             </div>
         </div>
@@ -56,8 +71,8 @@
     <!-- Masthead-->
     <header class="masthead">
         <div class="container">
-            <div class="masthead-subheading">BIENVENIDXS A</div>
-            <div class="masthead-heading text-uppercase">PROJECT!</div>
+            <div class="masthead-subheading">BIENVENID@S A</div>
+            <div class="masthead-heading text-uppercase">PYCINO!</div>
             <a class="btn btn-primary btn-xl text-uppercase" href="#portfolio">JUGAR</a>
         </div>
     </header>
@@ -76,7 +91,8 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"></div>
                             </div>
-                            <img class="img-fluid" src="{% static '/Moneda/assets/img/portfolio/blackjack.png' %}" alt="Blackjack" />
+                            <img class="img-fluid" src="{% static '/Moneda/assets/img/portfolio/blackjack.png' %}"
+                                alt="Blackjack" />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Blackjack</div>
@@ -91,7 +107,8 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"></div>
                             </div>
-                            <img class="img-fluid" src="{% static '/Moneda/assets/img/portfolio/juego-slots.jpg' %}" alt="Slots" />
+                            <img class="img-fluid" src="{% static '/Moneda/assets/img/portfolio/juego-slots.jpg' %}"
+                                alt="Slots" />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Slot</div>
@@ -106,7 +123,8 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"></div>
                             </div>
-                            <img class="img-fluid" src="{% static '/Moneda/assets/img/portfolio/caracruz.png' %}" alt="Cara o Cruz" />
+                            <img class="img-fluid" src="{% static '/Moneda/assets/img/portfolio/caracruz.png' %}"
+                                alt="Cara o Cruz" />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Cara o Cruz</div>
@@ -128,27 +146,37 @@
             </div>
             <div class="container text-center">
                 <div class="row">
-                  <div class="col">
-                    <img src="{% static '/Moneda/assets/img/portfolio/argentina-colombia.jpg' %}" alt="Bandera de Argentina y Colombia">
-                  </div>
-                  <div class="col">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, voluptates et. Exercitationem sint, in alias voluptas ullam explicabo soluta, expedita cupiditate quaerat dolorem ad voluptate accusantium vel modi aliquam aperiam?
-                    </p>
-                  </div>
+                    <div class="col">
+                        <img src="{% static '/Moneda/assets/img/portfolio/argentina-colombia.jpg' %}"
+                            alt="Bandera de Argentina y Colombia">
+                    </div>
+                    <div class="col">
+                        <p>Somos Esteban Fradin (Argentina) y Felipe Gamboa (Colombia). Juntos hemos desarrollado un
+                            proyecto denominado "PYCINO". Para realizarla nos divimos el trabajo de la siguiente
+                            manera:<br>
+                            -Nos comunicamos por discord y juntos empezamos a planearlo. Luego de pensar y leer las
+                            consignas comenzamos con el código.<br>-El proyecto fue iniciado por Felipe, el cuál importo
+                            Django y empezó inmediatamente a desarrollar los juegos.<br>-Esteban se encargó de los templates, luego de crearlos acomodo las url (url.py).
+
+                        </p>
+                    </div>
                 </div>
                 <div class="row">
-                  <div class="col">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae quas aut quibusdam hic cupiditate voluptatibus voluptates quod similique odio numquam dolorem aliquid, neque doloremque rem est? Enim ea accusamus eum!</p>
-                  </div>
-                  <div class="col">
-                    <img src="{% static '/Moneda/assets/img/info.jpg' %}" alt="Fichas cayendo" width="556" height="311">
-                  </div>
+                    <div class="col">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae quas aut quibusdam hic
+                            cupiditate voluptatibus voluptates quod similique odio numquam dolorem aliquid, neque
+                            doloremque rem est? Enim ea accusamus eum!</p>
+                    </div>
+                    <div class="col">
+                        <img src="{% static '/Moneda/assets/img/info.jpg' %}" alt="Fichas cayendo" width="556"
+                            height="311">
+                    </div>
                 </div>
-            
-                
-            
-           
-        </div>
+
+
+
+
+            </div>
     </section>
     <!-- Team-->
     <section class="page-section bg-light" id="team">
@@ -160,21 +188,25 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="team-member">
-                        <img class="mx-auto rounded-circle" src="{% static '/Moneda/assets/img/team/esteban.jpg' %}" alt="Foto de Esteban" />
+                        <img class="mx-auto rounded-circle" src="{% static '/Moneda/assets/img/team/esteban.jpg' %}"
+                            alt="Foto de Esteban" />
                         <h4>Esteban Fradin</h4>
                         <p class="text-muted">Learning development</p>
-                        
-                        <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/esteban-fradin-7b8371249/" aria-label="Parveen Anand LinkedIn Profile" target="_blank"> <i
+
+                        <a class="btn btn-dark btn-social mx-2"
+                            href="https://www.linkedin.com/in/esteban-fradin-7b8371249/"
+                            aria-label="Parveen Anand LinkedIn Profile" target="_blank"> <i
                                 class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
 
                 <div class="col-lg-6">
                     <div class="team-member">
-                        <img class="mx-auto rounded-circle" src="{% static '/Moneda/assets/img/team/felipe.png' %}" alt="Foto de Felipe" />
+                        <img class="mx-auto rounded-circle" src="{% static '/Moneda/assets/img/team/felipe.png' %}"
+                            alt="Foto de Felipe" />
                         <h4>Felipe Gamboa</h4>
                         <p class="text-muted">Learning development</p>
-                        
+
                         <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker LinkedIn Profile"><i
                                 class="fab fa-linkedin-in"></i></a>
                     </div>
@@ -188,19 +220,23 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-3 col-sm-6 my-3">
-                    <a><img class="img-fluid img-brand d-block mx-auto" src="{% static 'Moneda/assets/img/html-logo.png' %}"
-                            alt="Logo de HTML" aria-label="HTML Logo" /></a>
+                    <a><img class="img-fluid img-brand d-block mx-auto"
+                            src="{% static 'Moneda/assets/img/html-logo.png' %}" alt="Logo de HTML"
+                            aria-label="HTML Logo" /></a>
                 </div>
                 <div class="col-md-3 col-sm-6 my-3">
-                    <a><img class="img-fluid img-brand d-block mx-auto" src="{% static '/Moneda/assets/img/css-logo.png' %}"
-                            alt="Logo de CSS" aria-label="CSS Logo" /></a>
+                    <a><img class="img-fluid img-brand d-block mx-auto"
+                            src="{% static '/Moneda/assets/img/css-logo.png' %}" alt="Logo de CSS"
+                            aria-label="CSS Logo" /></a>
                 </div>
                 <div class="col-md-3 col-sm-6 my-3">
-                    <a><img class="img-fluid img-brand d-block mx-auto" src="{% static '/Moneda/assets/img/python.png' %}" alt="Logo de Python"
+                    <a><img class="img-fluid img-brand d-block mx-auto"
+                            src="{% static '/Moneda/assets/img/python.png' %}" alt="Logo de Python"
                             aria-label="Python Logo" /></a>
                 </div>
                 <div class="col-md-3 col-sm-6 my-3">
-                    <a><img class="img-fluid img-brand d-block mx-auto" src="{% static '/Moneda/assets/img/django.jpg' %}" alt="Logo de Django"
+                    <a><img class="img-fluid img-brand d-block mx-auto"
+                            src="{% static '/Moneda/assets/img/django.jpg' %}" alt="Logo de Django"
                             aria-label="Django Logo" /></a>
                 </div>
             </div>
@@ -211,7 +247,8 @@
         <div class="container">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Contacto</h2>
-                <h3 class="section-subheading text-muted">Si tienes alguna consulta o sugerencia no dudes en contactarte!!!</h3>
+                <h3 class="section-subheading text-muted">Si tienes alguna consulta o sugerencia no dudes en
+                    contactarte!!!</h3>
             </div>
             <!-- * * * * * * * * * * * * * * *-->
             <!-- * * SB Forms Contact Form * *-->
@@ -221,7 +258,7 @@
             <!-- https://startbootstrap.com/solution/contact-forms-->
             <!-- to get an API token!-->
             <form id="contactForm" data-sb-form-api-token="API_TOKEN" method="POST" action="{% url 'home-contacto' %}">
-                  {% csrf_token %}
+                {% csrf_token %}
                 <div class="row align-items-stretch mb-5">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -233,14 +270,14 @@
                         <div class="form-group">
                             <!-- Email address input-->
                             <input class="form-control" id="email" type="email" placeholder="MAIL *"
-                                data-sb-validations="required,email" name="mail"/>
+                                data-sb-validations="required,email" name="mail" />
                             <div class="invalid-feedback" data-sb-feedback="email:required">Se requiere su mail!</div>
                             <div class="invalid-feedback" data-sb-feedback="email:email">Mail NO valido!!</div>
                         </div>
                         <div class="form-group mb-md-0">
                             <!-- Phone number input-->
                             <input class="form-control" id="phone" type="tel" placeholder="TELÉFONO *"
-                                data-sb-validations="required" name="telefono"/>
+                                data-sb-validations="required" name="telefono" />
                             <div class="invalid-feedback" data-sb-feedback="phone:required">Se requiere su número de
                                 teléfono!</div>
                         </div>
@@ -284,12 +321,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2022</div>
                 <div class="col-lg-4 my-3 my-lg-0">
-                    <a class="btn btn-dark btn-social mx-2" href="https://twitter.com/coderhouse" target="_blank" aria-label="Twitter"><i
-                            class="fab fa-twitter"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/Coderhouse" target="_blank" aria-label="Facebook"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/school/coderhouse/" target="_blank" aria-label="LinkedIn"><i
-                            class="fab fa-linkedin-in"></i></a>
+                    <h4>PYCINO</h4>
                 </div>
                 <div class="col-lg-4 text-lg-end">
                     <a class="link-dark text-decoration-none me-3">Privacy Policy</a>
@@ -303,8 +335,8 @@
     <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="close-modal" data-bs-dismiss="modal"><img src="{% static '/Moneda/assets/img/close-icon.svg' %}"
-                        alt="Close modal" /></div>
+                <div class="close-modal" data-bs-dismiss="modal"><img
+                        src="{% static '/Moneda/assets/img/close-icon.svg' %}" alt="Close modal" /></div>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
@@ -312,14 +344,16 @@
                                 <!-- Project details-->
                                 <h2 class="text-uppercase"> BLACKJACK</h2>
                                 <p class="item-intro text-muted">Instrucciones..</p>
-                                <img class="img-fluid d-block mx-auto" src="{% static '/Moneda/assets/img/portfolio/blackjack-2.jpg' %}"
+                                <img class="img-fluid d-block mx-auto"
+                                    src="{% static '/Moneda/assets/img/portfolio/blackjack-2.jpg' %}"
                                     alt="Partida de blackjack" />
                                 <p>El objetivo de cualquier mano de blackjack es derrotar a la banca. Para esto, debes
                                     tener una mano que puntúe más alto que la mano de la banca, pero que no supere los
                                     21 puntos en valor total. O bien, puedes ganar con una puntuación inferior a 22
                                     cuando la mano de la banca supera los 21 puntos.</p>
-                                <a href="{% url 'juego-blackjack' %}"><button class="btn btn-primary btn-xl text-uppercase"
-                                        data-bs-dismiss="modal" type="button">
+                                <a href="{% url 'juego-blackjack' %}"><button
+                                        class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
+                                        type="button">
                                         Comenzar a jugar!
                                     </button>
                                 </a>
@@ -334,8 +368,8 @@
     <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="close-modal" data-bs-dismiss="modal"><img src="{% static '/Moneda/assets/img/close-icon.svg' %}"
-                        alt="Cerrar" /></div>
+                <div class="close-modal" data-bs-dismiss="modal"><img
+                        src="{% static '/Moneda/assets/img/close-icon.svg' %}" alt="Cerrar" /></div>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
@@ -343,8 +377,8 @@
                                 <!-- Project details-->
                                 <h2 class="text-uppercase">SLOTS</h2>
                                 <p class="item-intro text-muted">Instrucciones..</p>
-                                <img class="img-fluid d-block mx-auto" src="{% static '/Moneda/assets/img/portfolio/slots.jpg' %}"
-                                    alt="Slots" />
+                                <img class="img-fluid d-block mx-auto"
+                                    src="{% static '/Moneda/assets/img/portfolio/slots.jpg' %}" alt="Slots" />
                                 <p>En este juego los premios dependen exclusivamente del azar y cuanto más alta sea la
                                     apuesta, los premios también aumentan. El juego consiste en apretar el botón que
                                     dice "TIRAR", si te salen 3 figuras iguales lo que has apostado se duplica...
@@ -367,8 +401,8 @@
     <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="close-modal" data-bs-dismiss="modal"><img src="{% static '/Moneda/assets/img/close-icon.svg' %}"
-                        alt="Cerrar" /></div>
+                <div class="close-modal" data-bs-dismiss="modal"><img
+                        src="{% static '/Moneda/assets/img/close-icon.svg' %}" alt="Cerrar" /></div>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
@@ -376,17 +410,23 @@
                                 <!-- Project details-->
                                 <h2 class="text-uppercase">CARA O CRUZ</h2>
                                 <p class="item-intro text-muted">Instrucciones..</p>
-                                <img class="img-fluid d-block mx-auto" src="{% static '/Moneda/assets/img/portfolio/caraocruz.png' %}"
-                                    alt="Cara o Cruz" />
+                                <img class="img-fluid d-block mx-auto"
+                                    src="{% static '/Moneda/assets/img/portfolio/caraocruz.png' %}" alt="Cara o Cruz" />
                                 <p> 1- Antes de comenzar debes escribir en el campo de texto "CARA" o "CRUZ" y la
                                     cantidad de dinero que vas a apostar. Luego, pulsar el botón. <br>
                                     2- Inmediatamente vas a visualizar en la pantalla que lado salió. (Si sale el lado
                                     que escogiste se duplica lo que apostaste..)<br>
                                     IMPORTANTE: se considera cruz al número de la moneda, mientras que la efigie o
                                     dibujo se considera la cara.</p>
-                                <a href="{% url 'juego-caracruz' %}"><button class="btn btn-primary btn-xl text-uppercase"
-                                        data-bs-dismiss="modal" type="button">
-                                        Comenzar a jugar!!
+                                <a href="{% url 'juego-caracruz' %}"><button
+                                        class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
+                                        type="button">
+                                        Cara
+                                    </button></a>
+                                <a href="{% url 'juego-caracruz' %}"><button
+                                        class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
+                                        type="button">
+                                        Cruz
                                     </button></a>
                             </div>
                         </div>
