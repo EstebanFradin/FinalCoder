@@ -156,9 +156,9 @@ def slots (request):
     m2 = (matriz[1])
     m3 = (matriz[2])
     if row2[0] == row2[1] and row2[1] == row2[2]:
-        resultado = 'gamaste bro'
+        resultado = 'Felicidades, has ganado!!'
     else:
-        resultado = 'perdiste amigo'
+        resultado = 'Lo lamentamos, has perdido :('
 
     return render(request,"Moneda/slots.html", {'m1':m1,'m2':m2,'m3':m3,'resultado': resultado})
 

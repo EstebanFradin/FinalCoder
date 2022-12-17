@@ -10,7 +10,14 @@
 
 {% endif %}
 
-<div class="container justify-content-center mt-5" style="width:fit-content">
+<header class="masthead">
+    <div class="container">
+        <div class="masthead-heading text-uppercase">REGISTRARSE</div>
+    </div>
+</header>
+
+<section style="background-color: #f5f5f5;">
+<div class="container justify-content-center mt-5" style="width:fit-content;">
     <form method="post">
         {% csrf_token %}
 
@@ -21,5 +28,6 @@
     </form>
     <p>¿Ya tenes cuenta?. Entonces <a href="{% url 'auth-login' %}">INICIA SESIÓN</a></p>
 </div>
+</section>
 
 {% endblock %}
