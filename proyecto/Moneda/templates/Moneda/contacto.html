@@ -10,21 +10,26 @@
     </div>
 </header>
 
-<section style="background-color: #f5f5f5;">
-    <div class="container justify-content-center mt-5" style="width:fit-content; ">
-        <h3 style="text-align: center;">Completa el fromulario</h3>
-        <form method="post" class="container justify-content-center">
-            {% csrf_token %}
-    
-            {{formulario.as_p}}
-            
-    
-            <input type="submit" value="ENVIAR" class="container justify-content-center btn btn-primary">
-    
-        </form>
-        
-    </div>
-    </section>
+<div style="background-color: #f5f5f5;">
+    <form action="{% url 'home-contacto' %}" method="post"
+        style="display: flex;justify-content: center;align-items: center;">
+        {% csrf_token %}
+
+        <div>
+            <p>Nombre: <input type="text" name="nombre"></p>
+
+            <p>Mail: <input type="email" name="mail"></p>
+
+            <p>Teléfono: <input type="number" name="cel"></p>
+
+            <p><textarea name="msj" id="" cols="30" rows="10"></textarea></p>
+
+            <input type="submit" value="ENVIAR" class="btn btn-primary">
+        </div>
+
+    </form>
+</div>
+
 
 
 

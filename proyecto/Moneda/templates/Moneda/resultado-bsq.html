@@ -1,0 +1,27 @@
+{% extends "Moneda/base.html" %}
+
+{% load static %}
+
+{% block Contenido %}
+
+<header class="masthead">
+    <div class="container">
+        <div class="masthead-heading text-uppercase" style="color: #f5f5f5;">RESULTADO BÚSQUEDA</div>
+    </div>
+</header>
+
+<div style="background-color: #f5f5f5;">
+
+    
+    <ul>
+        {% for i in persona %}
+        <li>{{i.nombre}}</li>
+        <li>{{i.cel}}</li>
+        {% endfor %}
+    </ul>
+
+  
+
+</div>
+
+{% endblock %}

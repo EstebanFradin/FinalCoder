@@ -2,11 +2,6 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-class ContactoForm(forms.Form):
-    nombre = forms.CharField(max_length=30)
-    mail = forms.EmailField(label="Correo electrónico")
-    cel = forms.IntegerField()
-    msj = forms.CharField(widget=forms.Textarea )
 
 class Registrar_User(UserCreationForm):
     name = forms.CharField(max_length=25, label="Nombre")

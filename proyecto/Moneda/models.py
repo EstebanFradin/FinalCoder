@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 
 # Create your models here.
@@ -11,14 +13,17 @@ class Iniciar (models.Model):
     
 class Usuario(models.Model):
     usuario = models.OneToOneField(User,on_delete=models.CASCADE)
-    nombre = models.CharField(max_length=50)
     balance = models.IntegerField(default=10000)
     win = models.IntegerField(default=0)
     lose = models.IntegerField(default=0)
     cantidad_apostar = models.IntegerField(default=200)
     def __str__(self) -> None:
-        return self.nombre
+        return str(self.usuario)
         
+@receiver(post_save,sender=User)
+def concetarUsuarios(sender, instance,created, **kwargs):
+    if created:
+        Usuario.objects.create(usuario=instance)
 
 class Avatar(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)

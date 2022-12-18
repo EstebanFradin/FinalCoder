@@ -1,12 +1,12 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
-from django.contrib.auth import login,logout,authenticate
-from Moneda.forms import Registrar_User,UserEditForm,AvatarForm, ContactoForm
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login,authenticate
+from Moneda.forms import Registrar_User,UserEditForm,AvatarForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from Moneda.models import Avatar,Usuario,Contacto
-from Moneda.apps import moneda,slots,random
+from Moneda.apps import random
 
 
 
@@ -84,7 +84,7 @@ def editar_perfil(request):
             usuario.save()
             return redirect("home-inicio")
         else:
-            return render(request, 'Moneda/editar-perfil.html', {'form':formulario, 'errors': formulario.errors})
+            return render(request, 'Moneda/editar-perfil.html', {'formi':formulario, 'errors': formulario.errors})
 
     else:
         formulario = UserEditForm(initial = { "first_name": usuario.first_name,"email": usuario.email})
@@ -94,7 +94,7 @@ def editar_perfil(request):
  
 @login_required
 def elegir_avatar(request):
-    if request.method == "POST":
+    if not request.method == "POST":
         formulario = AvatarForm(request.POST, request.FILES)
         if formulario.is_valid():
             data = formulario.cleaned_data
@@ -121,16 +121,16 @@ def caracruz_cara (request):
     seleccionCPU = random.randint(0,1)
     seleccionJugador = 'CARA'
     if seleccionJugador.upper() == opciones[seleccionCPU]:
-        resultado = f'HAS GANADO. FELICITACIONES!!. Ahora tienes: {user.balance}$'
         user.balance = user.balance + (user.cantidad_apostar * 2)
         user.win += 1
         user.save()
+        resultado = f'HAS GANADO. FELICITACIONES!!. Ahora tienes: {user.balance}$'
         #duplicar plata self.balance = self.balance + int(MontoApostado)
     else:
-        resultado = f'HAS PERDIDO!. Ahora tienes: {user.balance}$'
         user.balance = user.balance - user.cantidad_apostar
         user.lose += 1
         user.save()
+        resultado = f'HAS PERDIDO!. Ahora tienes: {user.balance}$'
         #perder plata
     return render(request,"Moneda/cara-cruz.html", {'resultado': resultado})
 
@@ -142,16 +142,16 @@ def caracruz_cruz (request):
     seleccionCPU = random.randint(0,1)
     seleccionJugador = 'CRUZ'
     if seleccionJugador.upper() == opciones[seleccionCPU]:
-        resultado = f'HAS GANADO. FELICITACIONES!!. Ahora tienes: {user.balance}$'
         user.balance = user.balance + (user.cantidad_apostar * 2)
         user.win += 1
         user.save()
+        resultado = f'HAS GANADO. FELICITACIONES!!. Ahora tienes: {user.balance}$'
         #duplicar plata self.balance = self.balance + int(MontoApostado)
     else:
-        resultado = f'HAS PERDIDO. Ahora tienes: {user.balance}$'
         user.balance = user.balance - user.cantidad_apostar
         user.lose += 1
         user.save()
+        resultado = f'HAS PERDIDO. Ahora tienes: {user.balance}$'
         #perder plata
     return render(request,"Moneda/cara-cruz.html", {'resultado': resultado})
 
@@ -176,15 +176,15 @@ def slots (request):
     m2 = (matriz[1])
     m3 = (matriz[2])
     if row2[0] == row2[1] and row2[1] == row2[2]:
-        resultado = f'Felicidades, has ganado!!. Ahora tienes: {user.balance}'
         user.balance = user.balance + (user.cantidad_apostar * 10)
         user.win =+ 1
         user.save()
+        resultado = f'Felicidades, has ganado!!. Ahora tienes: {user.balance}$'
     else:
-        resultado = f'Lo lamentamos, has perdido. Ahora tienes: {user.balance}'
         user.balance = user.balance - user.cantidad_apostar
         user.lose += 1
         user.save()
+        resultado = f'Lo lamentamos, has perdido. Ahora tienes: {user.balance}$'
 
     return render(request,"Moneda/slots.html", {'m1':m1,'m2':m2,'m3':m3,'resultado': resultado})
 
@@ -195,16 +195,16 @@ def blackjack1 (request):
     seleccionCPU = random.choice(opciones)
     seleccionJugador = 1
     if seleccionJugador == seleccionCPU:
-        resultado = f'GANASTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         user.balance = user.balance + (user.cantidad_apostar * 4)
         user.win =+ 1
         user.save()
+        resultado = f'GANASTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         #duplicar plata self.balance = self.balance + int(MontoApostado)
     else:
-        resultado = f'PERDISTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         user.balance = user.balance - user.cantidad_apostar
         user.lose += 1
         user.save()
+        resultado = f'PERDISTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         #perder plata
     return render(request,"Moneda/blackjack.html", {'resultado': resultado})
 
@@ -215,16 +215,16 @@ def blackjack2 (request):
     seleccionCPU = random.choice(opciones)
     seleccionJugador = 2
     if seleccionJugador == seleccionCPU:
-        resultado = f'GANASTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         user.balance = user.balance + (user.cantidad_apostar * 4)
         user.win =+ 1
         user.save()
+        resultado = f'GANASTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         #duplicar plata self.balance = self.balance + int(MontoApostado)
     else:
-        resultado = f'PERDISTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         user.balance = user.balance - user.cantidad_apostar
         user.lose += 1
         user.save()
+        resultado = f'PERDISTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         #perder plata
     return render(request,"Moneda/blackjack.html", {'resultado': resultado})
 
@@ -235,16 +235,16 @@ def blackjack3 (request):
     seleccionCPU = random.choice(opciones)
     seleccionJugador = 3
     if seleccionJugador == seleccionCPU:
-        resultado = f'GANASTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         user.balance = user.balance + (user.cantidad_apostar * 4)
         user.win =+ 1
         user.save()
+        resultado = f'GANASTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         #duplicar plata self.balance = self.balance + int(MontoApostado)
     else:
-        resultado = f'PERDISTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         user.balance = user.balance - user.cantidad_apostar
         user.lose += 1
         user.save()
+        resultado = f'PERDISTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         #perder plata
     return render(request,"Moneda/blackjack.html", {'resultado': resultado})
 
@@ -255,16 +255,16 @@ def blackjack4 (request):
     seleccionCPU = random.choice(opciones)
     seleccionJugador = 4
     if seleccionJugador == seleccionCPU:
-        resultado = f'GANASTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         user.balance = user.balance + (user.cantidad_apostar * 4)
         user.win =+ 1
         user.save()
+        resultado = f'GANASTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         #duplicar plata self.balance = self.balance + int(MontoApostado)
     else:
-        resultado = f'PERDISTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         user.balance = user.balance - user.cantidad_apostar
         user.lose += 1
         user.save()
+        resultado = f'PERDISTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         #perder plata
     return render(request,"Moneda/blackjack.html", {'resultado': resultado})
 
@@ -275,16 +275,16 @@ def blackjack5 (request):
     seleccionCPU = random.choice(opciones)
     seleccionJugador = 5
     if seleccionJugador == seleccionCPU:
-        resultado = f'GANASTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         user.balance = user.balance + (user.cantidad_apostar * 4)
         user.win =+ 1
         user.save()
+        resultado = f'GANASTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         #duplicar plata self.balance = self.balance + int(MontoApostado)
     else:
-        resultado = f'PERDISTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         user.balance = user.balance - user.cantidad_apostar
         user.lose += 1
         user.save()
+        resultado = f'PERDISTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         #perder plata
     return render(request,"Moneda/blackjack.html", {'resultado': resultado})
 
@@ -295,41 +295,44 @@ def blackjack6 (request):
     seleccionCPU = random.choice(opciones)
     seleccionJugador = 6
     if seleccionJugador == seleccionCPU:
-        resultado = f'GANASTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         user.balance = user.balance + (user.cantidad_apostar * 4)
         user.win =+ 1
         user.save()
+        resultado = f'GANASTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         #duplicar plata self.balance = self.balance + int(MontoApostado)
     else:
-        resultado = f'PERDISTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         user.balance = user.balance - user.cantidad_apostar
         user.lose += 1
         user.save()
+        resultado = f'PERDISTE,salio el número: "{seleccionCPU}" | (ahora tienes: {user.balance}$)'
         #perder plata
     return render(request,"Moneda/blackjack.html", {'resultado': resultado})
 
-# Vista del Formulario de Contacto
+# Vista del Formulario de Contacto y Búsqueda
 
-def Contacto (request):
+def contactoForm (request):
 
     if request.method == "POST":
-
-        formulario = ContactoForm(request.POST)
-
-        print(formulario)
-    
         
-        if formulario.is_valid():
+        contact = Contacto.objects.create(nombre=request.POST['nombre'], mail=request.POST['mail'], cel=request.POST['cel'],msj=request.POST['msj'])
+        contact.save()
 
-            data = formulario.cleaned_data
+        return render(request, "index.html")
 
-            contacto = Contacto(nombre=data['nombre'],mail=data['mail'],cel=data['cel'],msj=['msj'])
+    return render(request, "Moneda/contacto.html")
 
-            contacto.save()
+def buscarDatos (request):
+    return render(request, 'Moneda/busqueda.html')
+    
 
-            
-    formulario = ContactoForm()
-    return render(request, "Moneda/contacto.html", {"formulario":formulario})
+def buscar(request):
+    if request.GET["nombreb"]:
+        name = request.GET["nombreb"]
+        persona = Contacto.objects.filter(nombre__icontains=name)
+        return render(request, 'Moneda/resultado-bsq.html', {'name':name,'persona':persona })
+    else:
+        respuesta = f'No has enviado datos'
 
+    return HttpResponse(respuesta)
 
 
