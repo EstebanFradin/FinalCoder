@@ -13,6 +13,9 @@ from Moneda.apps import random
 # Create your views here.
 
 #Vistas relacionadas al usuario
+def borrarContacto(request,nombre):
+    nombre = Contacto.objects.get(nombre=nombre)
+    return redirect('buscador-datos')
 
 @login_required
 def blackjack (request):
@@ -317,8 +320,9 @@ def contactoForm (request):
         contact = Contacto.objects.create(nombre=request.POST['nombre'], mail=request.POST['mail'], cel=request.POST['cel'],msj=request.POST['msj'])
         contact.save()
 
-        return render(request, "index.html")
-
+        
+        return redirect("home-inicio")
+        
     return render(request, "Moneda/contacto.html")
 
 def buscarDatos (request):

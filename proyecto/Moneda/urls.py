@@ -1,5 +1,5 @@
 from django.urls import path
-from Moneda.views import slots,inicio_sesion,registrar_usuario,editar_perfil,ver_perfil,elegir_avatar,blackjack1,blackjack2,blackjack3,blackjack4,blackjack5,blackjack6,caracruz_cara,caracruz_cruz, contactoForm, buscarDatos,buscar
+from Moneda.views import slots,inicio_sesion,registrar_usuario,editar_perfil,ver_perfil,elegir_avatar,blackjack1,blackjack2,blackjack3,blackjack4,blackjack5,blackjack6,caracruz_cara,caracruz_cruz, contactoForm, buscarDatos,buscar,borrarContacto
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
@@ -22,6 +22,6 @@ urlpatterns = [
 
     path('contacto/',contactoForm, name="home-contacto"),
     path('buscar-datos/', buscarDatos, name="buscador-datos"),
-    path('buscar/', buscar, name="resultados")
-
+    path('buscar/', buscar, name="resultados"),
+    path('eliminar/', borrarContacto, name="borrar"),
     ]

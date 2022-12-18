@@ -11,21 +11,22 @@
 </header>
 
 <div style="background-color: #f5f5f5;">
+    
     <form action="{% url 'home-contacto' %}" method="post"
         style="display: flex;justify-content: center;align-items: center;">
         {% csrf_token %}
 
-        <div>
             <p>Nombre: <input type="text" name="nombre"></p>
 
             <p>Mail: <input type="email" name="mail"></p>
 
             <p>Teléfono: <input type="number" name="cel"></p>
 
-            <p><textarea name="msj" id="" cols="30" rows="10"></textarea></p>
+            <label>Deja tu mensaje:</label>
+             <textarea name="msj" id="" cols="30" rows="10" ></textarea>
 
             <input type="submit" value="ENVIAR" class="btn btn-primary">
-        </div>
+        
 
     </form>
 </div>

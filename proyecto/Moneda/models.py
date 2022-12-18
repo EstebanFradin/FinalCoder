@@ -34,3 +34,6 @@ class Contacto(models.Model):
     mail = models.EmailField()
     cel = models.IntegerField()
     msj = models.CharField(max_length=150)
+    def __str__(self) -> str:
+        return self.nombre
+        
