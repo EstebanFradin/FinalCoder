@@ -51,11 +51,16 @@
                         </a>
 
 
-
-
                         <ul class="dropdown-menu">
+                            {% if request.user.is_authenticated %}
+                            <div hidden>
+                                <li><a class="dropdown-item" href="{% url 'auth-login' %}">Iniciar Sesión</a></li>
+                                <li><a class="dropdown-item" href="{% url 'auth-register' %}">Registrarse</a></li>
+                            </div>
+                            {% else %}
                             <li><a class="dropdown-item" href="{% url 'auth-login' %}">Iniciar Sesión</a></li>
                             <li><a class="dropdown-item" href="{% url 'auth-register' %}">Registrarse</a></li>
+                            {% endif %}
                             {% if request.user.is_authenticated %}
                             <li><a class="dropdown-item" href="{% url 'auth-logout' %}">Cerrar Sesión</a></li>
                             {% endif %}
@@ -82,6 +87,10 @@
         <div class="container">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">JUEGOS</h2>
+                <form action="" method="get">
+                    <input type="number" name="CantidadA" id="">
+                    <input type="submit" value="Apostar">
+                </form>
                 <h3 class="section-subheading text-muted">Aposta y ganá...</h3>
             </div>
             <div class="row">
@@ -152,16 +161,22 @@
                             alt="Bandera de Argentina y Colombia">
                     </div>
                     <div class="col">
-                        <p style="padding-top: 1rem;">El grupo esta integrado por: <br> Esteban Fradin (Argentina) y Felipe Gamboa (Colombia). 
+                        <p style="padding-top: 1rem;">El grupo esta integrado por: <br> Esteban Fradin (Argentina) y
+                            Felipe Gamboa (Colombia). Felipe es un estudiante de 18 años que lleva 3 meses programando,
+                            este fue su primer curso de coderhouse y esta acabando otro de DataAnalitics. Esteban es
+                            un estudiante de 17 años que lleva aproximadamente 4 meses programando. Este es el segundo
+                            curso que realiza en CoderHouse, el primero fue el de Desarrollo Web.
                         </p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <p style="padding-top: 2rem;">Sobre el proyecto <br> Decidimos realizar un página sobre apuestas, algo así como un casino
+                        <p style="padding-top: 2rem;">Sobre el proyecto <br> Decidimos realizar un página sobre
+                            apuestas, algo así como un casino
                             virtual, aunque es mas sencillo que uno. El nombre que seleccionamos para este es "PYCINO",
-                            lo cual es la suma de Python más la palabra Casino. Por último, en ella podemos encontrar 3 juegos: Dados, Slots y Cara o Cruz.
-                            
+                            lo cual es la suma de Python más la palabra Casino. Por último, en ella podemos encontrar 3
+                            juegos: Dados, Slots y Cara o Cruz.
+
                         </p>
                     </div>
                     <div class="col">
@@ -246,70 +261,8 @@
                 <h2 class="section-heading text-uppercase">Contacto</h2>
                 <h3 class="section-subheading text-muted">Si tienes alguna consulta o sugerencia no dudes en
                     contactarte!!!</h3>
+                    <a href="{% url 'home-contacto' %}"><button class="btn btn-primary btn-xl text-uppercase">CONTACTARSE</button></a>
             </div>
-            <!-- * * * * * * * * * * * * * * *-->
-            <!-- * * SB Forms Contact Form * *-->
-            <!-- * * * * * * * * * * * * * * *-->
-            <!-- This form is pre-integrated with SB Forms.-->
-            <!-- To make this form functional, sign up at-->
-            <!-- https://startbootstrap.com/solution/contact-forms-->
-            <!-- to get an API token!-->
-            <form id="contactForm" data-sb-form-api-token="API_TOKEN" method="POST" action="{% url 'home-contacto' %}">
-                {% csrf_token %}
-                <div class="row align-items-stretch mb-5">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <!-- Name input-->
-                            <input class="form-control" id="name" type="text" placeholder="NOMBRE *"
-                                data-sb-validations="required" name="nombre" />
-                            <div class="invalid-feedback" data-sb-feedback="name:required">Se requiere su nombre!</div>
-                        </div>
-                        <div class="form-group">
-                            <!-- Email address input-->
-                            <input class="form-control" id="email" type="email" placeholder="MAIL *"
-                                data-sb-validations="required,email" name="mail" />
-                            <div class="invalid-feedback" data-sb-feedback="email:required">Se requiere su mail!</div>
-                            <div class="invalid-feedback" data-sb-feedback="email:email">Mail NO valido!!</div>
-                        </div>
-                        <div class="form-group mb-md-0">
-                            <!-- Phone number input-->
-                            <input class="form-control" id="phone" type="tel" placeholder="TELÉFONO *"
-                                data-sb-validations="required" name="telefono" />
-                            <div class="invalid-feedback" data-sb-feedback="phone:required">Se requiere su número de
-                                teléfono!</div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group form-group-textarea mb-md-0">
-                            <!-- Message input-->
-                            <textarea class="form-control" id="message" placeholder="MENSAJES *"
-                                data-sb-validations="required" name="mensaje"></textarea>
-                            <div class="invalid-feedback" data-sb-feedback="message:required">Se requiere un mensaje!
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Submit success message-->
-                <!---->
-                <!-- This is what your users will see when the form-->
-                <!-- has successfully submitted-->
-                <div class="d-none" id="submitSuccessMessage">
-                    <div class="text-center text-white mb-3">
-                        <div class="fw-bolder">Envío de formulario exitoso!</div>
-                        <br />
-                    </div>
-                </div>
-                <!-- Submit error message-->
-                <!---->
-                <!-- This is what your users will see when there is-->
-                <!-- an error submitting the form-->
-                <div class="d-none" id="submitErrorMessage">
-                    <div class="text-center text-danger mb-3">Error al enviar el mensaje!</div>
-                </div>
-                <!-- Submit Button-->
-                <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled"
-                        id="submitButton" type="submit">ENVIAR</button></div>
-            </form>
         </div>
     </section>
     <!-- Footer-->

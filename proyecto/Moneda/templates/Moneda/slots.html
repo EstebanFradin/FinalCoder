@@ -14,11 +14,9 @@
         <h1>{{m2}}</h1><br>
         <h1>{{m3}}</h1><br>
     </div>
-    {% if resultado == "Lo lamentamos, has perdido :(" %}
-    <h2 style="color: red; text-align: center;"> {{resultado}}<br></h2>
-    {% else %}
-    <h2 style="color: green;text-align: center;"> {{resultado}}<br></h2>
-    {% endif %}
+    
+    <h2 style="color: black; text-align: center;"> {{resultado}}<br></h2>
+    
 
     <div style="padding-top: 4rem;">
         <a href="{% url 'home-inicio' %}" style="display: flex;justify-content: center;"><button

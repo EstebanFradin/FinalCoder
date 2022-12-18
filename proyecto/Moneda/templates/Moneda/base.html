@@ -46,8 +46,15 @@
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {{user.username}} </a>
                         <ul class="dropdown-menu">
+                            {% if request.user.is_authenticated %}
+                            <div hidden>
+                                <li><a class="dropdown-item" href="{% url 'auth-login' %}">Iniciar Sesión</a></li>
+                                <li><a class="dropdown-item" href="{% url 'auth-register' %}">Registrarse</a></li>
+                            </div>
+                            {% else %}
                             <li><a class="dropdown-item" href="{% url 'auth-login' %}">Iniciar Sesión</a></li>
                             <li><a class="dropdown-item" href="{% url 'auth-register' %}">Registrarse</a></li>
+                            {% endif %}
                             {% if request.user.is_authenticated %}
                             <li><a class="dropdown-item" href="{% url 'auth-logout' %}">Cerrar Sesión</a></li>
                             {% endif %}

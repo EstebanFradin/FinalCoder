@@ -1,5 +1,5 @@
 from django.urls import path
-from Moneda.views import slots,caracruz,Contacto,inicio_sesion,registrar_usuario,editar_perfil,ver_perfil,elegir_avatar,blackjack1,blackjack2,blackjack3,blackjack4,blackjack5,blackjack6,caracruz_cara,caracruz_cruz
+from Moneda.views import slots,Contacto,inicio_sesion,registrar_usuario,editar_perfil,ver_perfil,elegir_avatar,blackjack1,blackjack2,blackjack3,blackjack4,blackjack5,blackjack6,caracruz_cara,caracruz_cruz
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
