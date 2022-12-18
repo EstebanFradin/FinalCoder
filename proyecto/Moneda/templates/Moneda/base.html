@@ -48,16 +48,17 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{% url 'auth-login' %}">Iniciar Sesión</a></li>
                             <li><a class="dropdown-item" href="{% url 'auth-register' %}">Registrarse</a></li>
-                             {% if request.user.is_authenticated %}
+                            {% if request.user.is_authenticated %}
                             <li><a class="dropdown-item" href="{% url 'auth-logout' %}">Cerrar Sesión</a></li>
                             {% endif %}
 
                         </ul>
                     </li>
-                    <li class="nav-item"><a style="padding-top: 5%;" class="nav-link" href="{% url 'auth-perfil' %}"><img
-                                src="{{imagen_url}}" style="max-width: 55px;border-radius: 50%;"></a></li>
+                    <li class="nav-item"><a style="padding-top: 5%;" class="nav-link"
+                            href="{% url 'auth-perfil' %}"><img src="{{imagen_url}}"
+                                style="max-width: 55px;border-radius: 50%;"></a></li>
                 </ul>
-
+            
             </div>
 
         </div>

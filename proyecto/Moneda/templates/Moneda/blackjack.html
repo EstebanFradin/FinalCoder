@@ -3,6 +3,34 @@
 {% load static %}
 
 {% block Contenido %}
+<header class="masthead">
+    <div class="container">
+        <div class="masthead-heading text-uppercase" style="color: #f5f5f5;">DADOS</div>
+    </div>
+</header>
+<section style="background-color: #f5f5f5;">
+    <div class="container justify-content-center mt-5" style="width:fit-content; ">
+        {% if resultado == "Ganaste,salio el número: 1" %}
+        <h1 style="color: green;">{{ resultado }}</h1>
+        {% elif resultado == "Ganaste,salio el número: 2" %}
+        <h1 style="color: green;">{{ resultado }}</h1>
+        {% elif resultado == "Ganaste,salio el número: 3" %}
+        <h1 style="color: green;">{{ resultado }}</h1>
+        {% elif resultado == "Ganaste,salio el número:4" %}
+        <h1 style="color: green;">{{ resultado }}</h1>
+        {% elif resultado == "Ganaste,salio el número: 5" %}
+        <h1 style="color: green;">{{ resultado }}</h1>
+        {% elif resultado == "Ganaste,salio el número:6" %}
+        <h1 style="color: green;">{{ resultado }}</h1>
 
-{{ resultado }}
+        {% else %}
+        <h1 style="color: red;">{{ resultado }}</h1>
+        {% endif %}
+
+        <div style="padding-top: 4rem;">
+            <a href="{% url 'home-inicio' %}" style="display: flex;justify-content: center;"><button
+                    class="btn btn-primary btn-xl text-uppercase">Volver al Inicio</button></a>
+        </div>
+    </div>
+</section>
 {% endblock %}

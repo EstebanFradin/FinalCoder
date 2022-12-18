@@ -118,10 +118,10 @@ def caracruz_cara (request):
     seleccionCPU = random.randint(0,1)
     seleccionJugador = 'CARA'
     if seleccionJugador.upper() == opciones[seleccionCPU]:
-        resultado = f'Ganaste {seleccionCPU}'
+        resultado = f'HAS GANADO. FELICITACIONES!!'
         #duplicar plata self.balance = self.balance + int(MontoApostado)
     else:
-        resultado = f'perdiste {seleccionCPU}'
+        resultado = f'HAS PERDIDO :('
         #perder plata
     return render(request,"Moneda/cara-cruz.html", {'resultado': resultado})
 
@@ -130,10 +130,10 @@ def caracruz_cruz (request):
     seleccionCPU = random.randint(0,1)
     seleccionJugador = 'CRUZ'
     if seleccionJugador.upper() == opciones[seleccionCPU]:
-        resultado = 'Ganaste'
+        resultado = 'HAS GANADO. FELICITACIONES!!'
         #duplicar plata self.balance = self.balance + int(MontoApostado)
     else:
-        resultado = 'perdiste'
+        resultado = 'HAS PERDIDO :('
         #perder plata
     return render(request,"Moneda/cara-cruz.html", {'resultado': resultado})
 
@@ -167,72 +167,72 @@ def blackjack1 (request):
     seleccionCPU = random.choice(opciones)
     seleccionJugador = 1
     if seleccionJugador == seleccionCPU:
-        resultado = f'Ganaste----salio el {seleccionCPU}'
+        resultado = f'Ganaste,salio el número: {seleccionCPU}'
         #duplicar plata self.balance = self.balance + int(MontoApostado)
     else:
-        resultado = f'Perdiste----salio el {seleccionCPU}'
+        resultado = f'Perdiste,salio el número: {seleccionCPU}'
         #perder plata
-    return render(request,"Moneda/cara-cruz.html", {'resultado': resultado})
+    return render(request,"Moneda/blackjack.html", {'resultado': resultado})
 
 def blackjack2 (request):
     opciones = [1,2,3,4,5,6]
     seleccionCPU = random.choice(opciones)
     seleccionJugador = 2
     if seleccionJugador == seleccionCPU:
-        resultado = f'Ganaste----salio el {seleccionCPU}'
+        resultado = f'Ganaste,salio el número: {seleccionCPU}'
         #duplicar plata self.balance = self.balance + int(MontoApostado)
     else:
-        resultado = f'Perdiste----salio el {seleccionCPU}'
+        resultado = f'Perdiste,salio el número: {seleccionCPU}'
         #perder plata
-    return render(request,"Moneda/cara-cruz.html", {'resultado': resultado})
+    return render(request,"Moneda/blackjack.html", {'resultado': resultado})
 
 def blackjack3 (request):
     opciones = [1,2,3,4,5,6]
     seleccionCPU = random.choice(opciones)
     seleccionJugador = 3
     if seleccionJugador == seleccionCPU:
-        resultado = f'Ganaste----salio el {seleccionCPU}'
+        resultado = f'Ganaste,salio el número: {seleccionCPU}'
         #duplicar plata self.balance = self.balance + int(MontoApostado)
     else:
-        resultado = f'Perdiste----salio el {seleccionCPU}'
+        resultado = f'Perdiste,salio el número: {seleccionCPU}'
         #perder plata
-    return render(request,"Moneda/cara-cruz.html", {'resultado': resultado})
+    return render(request,"Moneda/blackjack.html", {'resultado': resultado})
 
 def blackjack4 (request):
     opciones = [1,2,3,4,5,6]
     seleccionCPU = random.choice(opciones)
     seleccionJugador = 4
     if seleccionJugador == seleccionCPU:
-        resultado = f'Ganaste----salio el {seleccionCPU}'
+        resultado = f'Ganaste,salio el número:{seleccionCPU}'
         #duplicar plata self.balance = self.balance + int(MontoApostado)
     else:
-        resultado = f'Perdiste----salio el {seleccionCPU}'
+        resultado = f'Perdiste,salio el número:{seleccionCPU}'
         #perder plata
-    return render(request,"Moneda/cara-cruz.html", {'resultado': resultado})
+    return render(request,"Moneda/blackjack.html", {'resultado': resultado})
 
 def blackjack5 (request):
     opciones = [1,2,3,4,5,6]
     seleccionCPU = random.choice(opciones)
     seleccionJugador = 5
     if seleccionJugador == seleccionCPU:
-        resultado = f'Ganaste----salio el {seleccionCPU}'
+        resultado = f'Ganaste,salio el número: {seleccionCPU}'
         #duplicar plata self.balance = self.balance + int(MontoApostado)
     else:
-        resultado = f'Perdiste----salio el {seleccionCPU}'
+        resultado = f'Perdiste,salio el número: {seleccionCPU}'
         #perder plata
-    return render(request,"Moneda/cara-cruz.html", {'resultado': resultado})
+    return render(request,"Moneda/blackjack.html", {'resultado': resultado})
 
 def blackjack6 (request):
     opciones = [1,2,3,4,5,6]
     seleccionCPU = random.choice(opciones)
     seleccionJugador = 6
     if seleccionJugador == seleccionCPU:
-        resultado = f'Ganaste----salio el {seleccionCPU}'
+        resultado = f'Ganaste,salio el número:{seleccionCPU}'
         #duplicar plata self.balance = self.balance + int(MontoApostado)
     else:
-        resultado = f'Perdiste----salio el {seleccionCPU}'
+        resultado = f'Perdiste,salio el número:{seleccionCPU}'
         #perder plata
-    return render(request,"Moneda/cara-cruz.html", {'resultado': resultado})
+    return render(request,"Moneda/blackjack.html", {'resultado': resultado})
 
 # Vista del Formulario de Contacto
 
