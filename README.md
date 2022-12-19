@@ -7,7 +7,7 @@ De todas formas cabe aclarar que hubieron partes que realizamos en llamada.
 
 ## Video del funcionamiento
 
-
+[Link del video](https://drive.google.com/file/d/1n4qEJGR0rjNfYZK5ESMXYTL092NyH3sE/view)
 
 
 ## Run Project

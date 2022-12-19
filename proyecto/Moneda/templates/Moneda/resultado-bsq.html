@@ -10,18 +10,14 @@
     </div>
 </header>
 
-<div style="background-color: #f5f5f5;">
-
-    
-    <ul>
+<div style="background-color: #212529;padding-bottom: 2%;text-align: center;">
+    <h2 style="color: #f5f5f5;padding-top: 2%;">Usuarios encontrados:</h2>
+    <ul style="list-style: none;">
         {% for i in persona %}
-        <li>{{i.nombre}}</li> 
-        <li>{{i.cel}}</li>
-        <li>{{i.msj}}</li>
+        <li style="font-size: 22px; color: #f5f5f5;">{{i.nombre}}</li>
+        <li style="font-size: 22px; color: #f5f5f5;">{{i.mail}}</li>
         {% endfor %}
     </ul>
-
-  
 
 </div>
 

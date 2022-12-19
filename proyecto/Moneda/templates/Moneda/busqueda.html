@@ -10,17 +10,15 @@
     </div>
 </header>
 
-<div style="background-color: #f5f5f5;">
+<div style="background-color: #212529;height: 6rem;">
     
-        
-
-        <div>
+        <div style="display: flex;justify-content: center;align-items: center;padding-top: 1.5%;">
             <form action="{% url 'resultados' %}" method="get">
                 {% csrf_token %}
 
                 <input type="text" name="nombreb" id="nombreb">
 
-                <input type="submit" value="Buscar Persona">
+                <input type="submit" value="Buscar Persona" class="btm btn-primary">
             </form>
         </div>
 
