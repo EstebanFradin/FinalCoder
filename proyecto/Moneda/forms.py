@@ -27,7 +27,6 @@ class UserEditForm(UserCreationForm):
         exclude = ["username"]
         help_texts = {"first_name": "","email": "Indica un correo que utilices habitualmente"}
 
-class AvatarForm(forms.Form):
-    imagen = forms.ImageField(label="Imagen")
+
 
 

@@ -2,10 +2,10 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login,authenticate
-from Moneda.forms import Registrar_User,UserEditForm,AvatarForm
+from Moneda.forms import Registrar_User,UserEditForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from Moneda.models import Avatar,Usuario,Contacto
+from Moneda.models import Usuario,Contacto
 from Moneda.apps import random
 
 
@@ -95,26 +95,6 @@ def editar_perfil(request):
 
     return render(request, 'Moneda/editar-perfil.html', {'form':formulario}) 
  
-@login_required
-def elegir_avatar(request):
-    if not request.method == "POST":
-        formulario = AvatarForm(request.POST, request.FILES)
-        if formulario.is_valid():
-            data = formulario.cleaned_data
-
-            usuario = request.user
-
-            avatar = Avatar(user=usuario, imagen=data["imagen"])
-            avatar.save()
-            return redirect("home-inicio")
-        else:
-            return render(request, 'Moneda/agregar-avatar.html',{"form": formulario, "errors":formulario.errors})
-
-
-    formulario = AvatarForm()
-
-    return render(request, 'Moneda/agregar-avatar.html',{"form": formulario})
-
 # Vista de Juegos
 @login_required
 def caracruz_cara (request):
