@@ -7,7 +7,7 @@ De todas formas cabe aclarar que hubieron partes que realizamos en llamada.
 
 ## Video del funcionamiento
 
-[Link del video](https://drive.google.com/file/d/1LxQSUzHF8_inbZIpoJkXlZ_JXj6luIW6/view?usp=sharing)
+
 
 
 ## Run Project
@@ -36,11 +36,6 @@ Correr el servidor
 
 ## Tests
 
-To run tests, run the following command
-
-```bash
-  npm run test
-```
 
 
 <h3 align="left">Lenguajes y Herramientas:</h3>
